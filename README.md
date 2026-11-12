@@ -17,13 +17,14 @@ Aplicație mobilă publică pentru administrarea unuia sau mai multor autovehicu
 - [Romania Data Sources](docs/ROMANIA_DATA_SOURCES.md)
 - [Roadmap](docs/ROADMAP.md)
 - [Final Qoder Implementation Specification](docs/QODER_IMPLEMENTATION_SPEC.md)
-- [Execution Playbook — instrucțiuni complete Faza 0–7](docs/EXECUTION_PLAYBOOK.md)
+- [Execution Playbook — instrucțiuni complete Faza 0–7 + Faza 1.5 UI/UX](docs/EXECUTION_PLAYBOOK.md)
 - [Qoder Commands — comenzi scurte](docs/QODER_COMMANDS.md)
 - [Implementation Status — progresul proiectului](docs/IMPLEMENTATION_STATUS.md)
 
 ## Design PocketCar
 
 - [Design Specification](docs/DESIGN_SPECIFICATION.md) — direcția vizuală aprobată și cerințele de implementare.
+- **Faza 1.5 — UI/UX** este o etapă separată obligatorie după fundația tehnică și înainte de Faza 2; implementarea ei este descrisă în Execution Playbook.
 - [Concept Board Light/Dark (SVG)](assets/design/pocketcar-concept-board.svg) — planșă vizuală scalabilă pentru referință.
 
 ## Cum se lucrează
