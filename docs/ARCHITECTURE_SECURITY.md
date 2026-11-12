@@ -100,3 +100,17 @@ Telefon pierdut: criptare, biometrie, timeout, revocare. Root/jailbreak: reducer
 - [ ] Ștergerea elimină cache, thumbnail și aplică politica backup.
 - [ ] Logout, revocare dispozitiv și ștergere cont testate.
 - [ ] Review OWASP MASVS și testare API înainte de lansare.
+
+
+## 13. Hosting și deployment
+
+Decizia de infrastructură și procedurile complete sunt definite în [DEPLOYMENT_ARCHITECTURE.md](DEPLOYMENT_ARCHITECTURE.md).
+
+- Dezvoltare și testare pe PC Windows; GitHub este sursa oficială.
+- TrueNAS găzduiește serviciile backend/containerizate, nu workspace-ul principal Qoder.
+- PostgreSQL și orice object storage au volume persistente separate de cod și lifecycle-ul containerelor.
+- Documentele și OCR-ul nu ajung în clar pe backend; object storage poate conține numai ciphertext E2EE.
+- Reverse proxy/TLS este singurul punct public de intrare. DB, SSH, TrueNAS UI și Docker API nu se expun public.
+- Deploy numai din release versionat, după teste, backup verificat și aprobare explicită.
+- Rollback-ul aplicației nu implică rollback automat al bazei de date.
+- Se cere backup off-site criptat și test periodic de restaurare.
