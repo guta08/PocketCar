@@ -5,7 +5,7 @@ Scop: instrucțiuni complete de execuție pentru toate fazele până la prima ve
 
 ## 0. Cum se folosește acest playbook
 
-Acest document, împreună cu PRODUCT_REQUIREMENTS.md, ARCHITECTURE_SECURITY.md, ROMANIA_DATA_SOURCES.md și QODER_IMPLEMENTATION_SPEC.md, este contractul de execuție.
+Acest document, împreună cu PRODUCT_REQUIREMENTS.md, ARCHITECTURE_SECURITY.md, DEPLOYMENT_ARCHITECTURE.md, ROMANIA_DATA_SOURCES.md și QODER_IMPLEMENTATION_SPEC.md, este contractul de execuție. Pentru infrastructură și livrare, DEPLOYMENT_ARCHITECTURE.md este obligatoriu.
 
 **Regula de operare:** utilizatorul îi spune lui Qoder doar „Începe Faza N”. Qoder execută integral acea fază fără să ceară confirmări intermediare pentru activități deja specificate. La final:
 1. rulează toate testele aplicabile;
