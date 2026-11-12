@@ -33,9 +33,8 @@ Auditează Faza N față de docs/EXECUTION_PLAYBOOK.md și docs/PRODUCT_REQUIREM
 
 ## Ordinea recomandată
 - Faza 0 — audit și plan tehnic
-- Faza 1 — fundație, interfață și cont
+- Faza 1 — fundație cross-platform, infrastructură UI de bază, backend și cont
 - Faza 1.5 — implementarea completă UI/UX aprobat
-- Faza 1.5 — UI/UX complet
 - Faza 2 — garaj multi-vehicul și VIN
 - Faza 3 — valabilități și mentenanță
 - Faza 4 — seif, scanner și OCR
