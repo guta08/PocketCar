@@ -1,30 +1,29 @@
 # PocketCar
 
-PocketCar este o aplicație mobilă publică pentru administrarea unuia sau mai multor autovehicule: valabilități, mentenanță, notificări și seif privat pentru documente.
+Aplicație mobilă publică pentru administrarea unuia sau mai multor autovehicule: valabilități, mentenanță, notificări și seif privat pentru documente.
 
 ## Decizii confirmate
-- Cont obligatoriu.
-- Android și iOS.
-- Mai multe vehicule per cont încă din MVP.
-- Publicare în Google Play și Apple App Store.
-- Push și e-mail, ambele suportate și configurabile independent.
-- Backup criptat end-to-end, activat explicit de utilizator.
-- Documentele rămân locale în utilizarea normală; backup-ul opțional conține numai ciphertext.
+- Cont obligatoriu; Android și iOS.
+- Mai multe vehicule per cont din MVP.
+- Publicare planificată în Google Play și Apple App Store.
+- Push și e-mail, configurabile independent.
+- Backup E2EE opțional; documentele rămân locale în utilizarea normală.
+- Niciun document, imagine sau OCR nu se transmite în clar către backend.
 
-## Principii obligatorii
-1. Local-first: datele și documentele sunt disponibile local/offline.
-2. Documentele nu sunt încărcate niciodată în clar în backend.
-3. Backup-ul este criptat pe dispozitiv înainte de upload; serverul nu deține cheia.
-4. Contul obligatoriu susține identitatea, notificările și backup-ul, dar nu deblochează automat seiful.
-5. VIN/OCR/surse externe sunt date propuse până la confirmarea utilizatorului.
-6. Biometria este gestionată de sistemul de operare.
-7. Backend-ul primește numai metadatele minime necesare alertelor.
-
-## Documentație
+## Documentație — sursa de adevăr
 - [Product Requirements](docs/PRODUCT_REQUIREMENTS.md)
 - [Architecture & Security](docs/ARCHITECTURE_SECURITY.md)
 - [Romania Data Sources](docs/ROMANIA_DATA_SOURCES.md)
-- [Roadmap & Decisions](docs/ROADMAP.md)
+- [Roadmap](docs/ROADMAP.md)
 - [Final Qoder Implementation Specification](docs/QODER_IMPLEMENTATION_SPEC.md)
+- [Execution Playbook — instrucțiuni complete Faza 0–7](docs/EXECUTION_PLAYBOOK.md)
+- [Qoder Commands — comenzi scurte](docs/QODER_COMMANDS.md)
+- [Implementation Status — progresul proiectului](docs/IMPLEMENTATION_STATUS.md)
 
-Documentația este sursa de adevăr pentru implementarea realizată de Qoder.
+## Cum se lucrează
+1. Deschide Qoder în repository-ul de cod PocketCar.
+2. Dă comanda din [QODER_COMMANDS.md](docs/QODER_COMMANDS.md) pentru Faza 0.
+3. După raport, folosește aceeași comandă schimbând numărul fazei.
+4. Qoder citește progresul din IMPLEMENTATION_STATUS.md; nu trebuie să copiezi rapoarte între agenți.
+
+Qoder execută fiecare fază integral, testează, actualizează documentația și se oprește la final. Nu începe faza următoare fără comanda utilizatorului.
