@@ -350,6 +350,10 @@ La finalul fiecărei faze:
 După raportul complet, oprește-te. Nu porni automat următoarea fază și nu cere utilizatorului să reanalizeze planul. Așteaptă doar comanda scurtă „Începe Faza N”.
 
 
+## Design system aprobat
+
+Direcția vizuală PocketCar este definită în `DESIGN_SPECIFICATION.md`, iar planșa de referință este `assets/design/pocketcar-concept-board.svg`. Qoder trebuie să le consulte înainte de implementarea UI și să respecte cerințele de Light/Dark, responsive layout, bottom navigation, EN/RO, accesibilitate, privacy și stările UI. Planșa este referință vizuală, nu asset de UI runtime.
+
 ## 16. Reguli obligatorii de dezvoltare și hosting TrueNAS
 
 Citește și respectă integral [DEPLOYMENT_ARCHITECTURE.md](DEPLOYMENT_ARCHITECTURE.md). Acesta stabilește decizia fermă: dezvoltare/testare pe PC Windows, cod versionat în GitHub, servicii backend găzduite pe TrueNAS și deployment numai pentru versiuni validate și aprobate.
