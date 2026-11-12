@@ -34,3 +34,14 @@ Auditează Faza N față de docs/EXECUTION_PLAYBOOK.md și docs/PRODUCT_REQUIREM
 - Faza 7 — integrare, QA și prima versiune funcțională
 
 **Tu nu trebuie să copiezi rapoartele între agenți.** Qoder citește progresul din repository. În conversația cu Qoder este suficientă comanda pentru faza următoare.
+
+
+## Deployment pe TrueNAS — numai după aprobare explicită
+
+Qoder nu execută deployment în producție ca parte implicită a unei faze. După ce versiunea a trecut testele pe PC și utilizatorul aprobă explicit publicarea, folosește:
+
+~~~text
+Pregătește deployment-ul versiunii validate PocketCar pe TrueNAS conform docs/DEPLOYMENT_ARCHITECTURE.md. Verifică mai întâi commit SHA, release tag, imagini/digest-uri, configurația, volumele persistente, migrațiile, backupul și procedura de rollback. Prezintă planul și comenzile exacte, serviciile afectate, riscurile și testele post-deploy. Nu executa încă nicio comandă pe TrueNAS și nu modifica instanța activă; așteaptă aprobarea mea explicită pentru execuție.
+~~~
+
+După analizarea planului, utilizatorul poate aproba separat execuția. Qoder trebuie să execute numai pașii aprobați și să raporteze dovezile verificării. Nu include secrete în conversație sau în repository.
