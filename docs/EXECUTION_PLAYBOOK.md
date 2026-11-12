@@ -348,3 +348,31 @@ La finalul fiecărei faze:
 ## 15. Regula de oprire
 
 După raportul complet, oprește-te. Nu porni automat următoarea fază și nu cere utilizatorului să reanalizeze planul. Așteaptă doar comanda scurtă „Începe Faza N”.
+
+
+## 16. Reguli obligatorii de dezvoltare și hosting TrueNAS
+
+Citește și respectă integral [DEPLOYMENT_ARCHITECTURE.md](DEPLOYMENT_ARCHITECTURE.md). Acesta stabilește decizia fermă: dezvoltare/testare pe PC Windows, cod versionat în GitHub, servicii backend găzduite pe TrueNAS și deployment numai pentru versiuni validate și aprobate.
+
+### Cerințe suplimentare pentru Faza 0
+- Auditează versiunea TrueNAS, Apps/Docker runtime, capacitatea hardware, pool/datasets, ACL/UID/GID și conectivitatea publică.
+- Verifică calea furnizată de proprietar: /mnt/Pool1/Stocare/PocketCar.
+- Definește containerele, volumele persistente, separarea mediilor, resource limits, DNS/TLS, reverse proxy, firewall, backup/restore, monitorizare și rollback.
+- Evaluează CGNAT/IP public, UPS, disponibilitatea internetului și impactul asupra aplicațiilor deja găzduite.
+- Listează pașii manuali exacți pentru proprietar.
+- Nu efectua modificări pe TrueNAS și nu porni deployment în Faza 0.
+
+### Cerințe transversale pentru toate fazele
+- Dezvoltă și testează pe PC Windows; nu lucra direct în folderul activ de pe TrueNAS.
+- Backend-ul trebuie să fie containerizabil și portabil. Nu hardcoda căi de host.
+- Separă codul, imaginile container și volumele de date persistente.
+- Folosește secrets/environment securizat; niciun secret în Git, imagini sau loguri.
+- Include health/readiness checks, graceful shutdown, migrații controlate, loguri redactate și instrucțiuni de backup/restore.
+- Pregătește artefacte versionate și reproductibile. Nu folosi tag-ul latest ca identificator unic pentru producție.
+- Nu expune PostgreSQL, SSH, TrueNAS UI sau Docker API pe internet.
+- Nu face deploy, restart, migrare sau expunere de porturi pe instanța activă fără aprobare explicită.
+- Nu afirma că TrueNAS a fost configurat/testat dacă nu există dovezi efective.
+
+### Criteriu de acceptanță pentru hosting
+Înainte de primul deployment, toate elementele din checklist-ul secțiunii 11 din DEPLOYMENT_ARCHITECTURE.md trebuie să fie PASS sau să aibă excepție acceptată explicit de proprietar. Dacă hardware-ul/conectivitatea nu susțin hosting public sigur, prezintă alternativele și nu forța lansarea pe NAS.
+
