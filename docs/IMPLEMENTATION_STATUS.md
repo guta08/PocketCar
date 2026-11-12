@@ -18,12 +18,13 @@ Status general: **Documentație pregătită; implementarea nu a început / neces
 |---|---|---|---|
 | 0 — Audit tehnic | Neîncepută | — | Qoder trebuie să inspecteze repository-ul aplicației |
 | 1 — Fundație și cont | Neîncepută | — | Depinde de Faza 0 |
-| 2 — Garaj și VIN | Neîncepută | — | Depinde de Faza 1 |
+| 1.5 — UI/UX aprobat | Neîncepută | — | Depinde de Faza 1; înainte de Faza 2 |
+| 2 — Garaj și VIN | Neîncepută | — | Depinde de Faza 1.5 |
 | 3 — Valabilități și mentenanță | Neîncepută | — | Depinde de Faza 2 |
 | 4 — Seif, scanner, OCR | Neîncepută | — | Depinde de Faza 1 și 2 |
 | 5 — Push și e-mail | Neîncepută | — | Depinde de Faza 1 și 3 |
 | 6 — Backup E2EE și sync | Neîncepută | — | Depinde de Faza 1 și 4 |
-| 7 — Integrare și MVP funcțional | Neîncepută | — | Depinde de fazele 1–6 |
+| 7 — Integrare și MVP funcțional | Neîncepută | — | Depinde de fazele 1–6 și 1.5 |
 
 ## Decizii tehnice implementate
 Niciuna încă. Qoder va completa această secțiune după fiecare fază.
