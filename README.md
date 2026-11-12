@@ -21,6 +21,11 @@ Aplicație mobilă publică pentru administrarea unuia sau mai multor autovehicu
 - [Qoder Commands — comenzi scurte](docs/QODER_COMMANDS.md)
 - [Implementation Status — progresul proiectului](docs/IMPLEMENTATION_STATUS.md)
 
+## Design PocketCar
+
+- [Design Specification](docs/DESIGN_SPECIFICATION.md) — direcția vizuală aprobată și cerințele de implementare.
+- [Concept Board Light/Dark (SVG)](assets/design/pocketcar-concept-board.svg) — planșă vizuală scalabilă pentru referință.
+
 ## Cum se lucrează
 
 1. Repository-ul se clonează pe PC-ul Windows; Qoder folosește workspace-ul local **This computer**.
