@@ -36,6 +36,10 @@ Auditează Faza N față de docs/EXECUTION_PLAYBOOK.md și docs/PRODUCT_REQUIREM
 **Tu nu trebuie să copiezi rapoartele între agenți.** Qoder citește progresul din repository. În conversația cu Qoder este suficientă comanda pentru faza următoare.
 
 
+## Implementarea designului PocketCar
+
+Citește integral `docs/DESIGN_SPECIFICATION.md` și inspectează `assets/design/pocketcar-concept-board.svg`. Acestea sunt referințele aprobate pentru identitatea vizuală. Implementează componente native reutilizabile, design tokens, Light/Dark cu urmărirea temei sistemului, layout responsive, bottom navigation și localizare EN/RO. Nu folosi planșa SVG ca interfață în aplicație și nu reproduce dimensiunile ei fixe. Construiește toate ecranele și stările descrise în specificație. Nu considera designul complet după implementarea exclusivă a dashboard-ului; livrează capturi pentru revizuire.
+
 ## Deployment pe TrueNAS — numai după aprobare explicită
 
 Qoder nu execută deployment în producție ca parte implicită a unei faze. După ce versiunea a trecut testele pe PC și utilizatorul aprobă explicit publicarea, folosește:
