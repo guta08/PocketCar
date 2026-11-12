@@ -84,13 +84,14 @@ Verificările oficiale românești pot rămâne fluxuri asistate dacă nu exist�
 | Fază | Rezultat | Depinde de |
 |---|---|---|
 | 0 | Audit tehnic și plan de execuție | — |
-| 1 | Fundație, design system, backend dev și conturi | 0 |
-| 2 | Garaj multi-vehicul și VIN | 1 |
+| 1 | Fundație cross-platform, design tokens de bază, backend dev și conturi | 0 |
+| 1.5 | Implementarea completă a UI/UX aprobat | 1 |
+| 2 | Garaj multi-vehicul și VIN, conectat la UI | 1.5 |
 | 3 | Valabilități și mentenanță | 2 |
 | 4 | Seif, scanner și OCR local | 1, 2 |
 | 5 | Push și e-mail reale | 1, 3 |
 | 6 | Backup E2EE și sincronizare minimă | 1, 4 |
-| 7 | Integrare, QA și prima versiune funcțională | 1–6 |
+| 7 | Integrare, QA și prima versiune funcțională | 1–6 și 1.5 |
 
 Fazele 3 și 4 pot fi dezvoltate secvențial de același agent; nu sări peste dependențe. Dacă repository-ul existent are deja componente valide, auditează-le și reutilizează-le.
 
@@ -151,6 +152,51 @@ Aplicație cross-platform pornibilă, design system și backend de identitate fu
 - Ecrane cu stări loading/error/offline.
 - CI rulează lint, teste și build.
 - Nu există secrete în repository.
+
+## 6A. Faza 1.5 — Implementarea UI/UX aprobat
+
+### Obiectiv
+Transformă specificația vizuală aprobată într-o interfață mobilă completă, nativă și funcțională la nivel de navigare și interacțiuni UI, pe Android și iOS. Aceasta este o fază separată de implementarea logicii de business din fazele 2–7.
+
+### Referințe obligatorii
+- `docs/DESIGN_SPECIFICATION.md` — specificația completă și sursa de adevăr pentru UI.
+- `assets/design/pocketcar-concept-board.svg` — referință vizuală Light/Dark.
+- Deciziile de produs din `PRODUCT_REQUIREMENTS.md` și arhitectura din `ARCHITECTURE_SECURITY.md`.
+
+### Activități
+1. Auditează UI-ul creat în Faza 1 și reutilizează componentele valide; nu rescrie inutil fundația.
+2. Implementează sistemul complet de design: tokens Light/Dark, tipografie, spacing, grid, forme, elevation, iconografie, componente și variante.
+3. Aplică tema automată după sistem și permite schimbarea manuală dacă specificația o cere; verifică persistența preferinței.
+4. Construiește navigația bottom-tab și toate ecranele enumerate în DESIGN_SPECIFICATION.md: onboarding, autentificare, garaj, adăugare VIN, dashboard, detalii vehicul, valabilități, service, seif documente, scanare/revizuire, notificări și profil/setări.
+5. Implementează stările loading, empty, error, offline, disabled, success, permission denied și confirmare pentru fiecare flux relevant.
+6. Respectă layout-ul responsive, safe areas, tastatură, scroll, orientări suportate și dimensiuni diferite de ecran.
+7. Implementează localizarea EN/RO pentru toate textele UI; limba implicită și fallback-ul respectă specificația de produs.
+8. Aplică regulile de accesibilitate: contrast, semantic labels, font scaling, focus order și touch targets.
+9. Aplică cerințele privacy UI: mascarea identificatorilor, seif blocat, conținut generic în notificări și protecția snapshot-urilor unde platforma permite.
+10. Leagă ecranele de navigație și de modele/view-models tipizate. Pentru date care nu sunt implementate încă, folosește doar stări empty sau fixtures/demo clar etichetate; nu simula succesul unei funcții reale și nu crea logică de business duplicată.
+11. Adaugă teste UI/component pentru navigație, teme, localizare, stări și layout; generează capturi/screenshot tests pentru toate ecranele principale în ambele teme.
+12. Actualizează DESIGN_SPECIFICATION.md numai dacă apare o constrângere tehnică reală; documentează abaterea și justificarea. Nu schimba direcția aprobată din preferință proprie.
+
+### Delimitare
+- Faza 1.5 livrează UI-ul complet și navigabil, nu implementarea backend-ului sau a funcționalităților de business.
+- Nu considera VIN, OCR, scanner, document vault, notificări ori backup funcționale doar pentru că există ecrane. Acestea se implementează și se validează în fazele lor dedicate.
+- Nu folosi planșa SVG ca imagine de fundal sau interfață runtime; construiește componente native/reale.
+- Nu introduce date personale reale în fixtures sau capturi.
+- Nu executa deployment pe TrueNAS.
+
+### Criterii de acceptanță
+- Toate ecranele din DESIGN_SPECIFICATION.md sunt implementate; niciun ecran principal lipsă.
+- Light și Dark sunt complete și lizibile; urmărirea temei sistemului funcționează.
+- EN și RO sunt complete pentru toate ecranele și stările.
+- Bottom navigation, navigarea secundară, back behavior și deep links (dacă sunt prevăzute de arhitectură) funcționează fără dead ends.
+- Formulare, controale, dialoguri și acțiuni UI au comportament coerent; acțiunile neimplementate funcțional sunt dezactivate sau marcate explicit.
+- Layout-ul este verificat pe cel puțin două dimensiuni Android și două dimensiuni iOS/simulatoare, inclusiv ecrane mici.
+- Testele UI și screenshot-urile pentru ecranele principale în ambele teme sunt atașate raportului.
+- Nu există overflow, text clipping, controale inaccesibile sau erori blocker/critical.
+- Build-urile Android și iOS trec; lint, typecheck și testele existente trec.
+
+### Raport suplimentar obligatoriu
+Raportul Fazei 1.5 include inventarul ecranelor cu PASS/FAIL, matricea Light/Dark × EN/RO, dispozitivele/dimensiunile testate, capturile generate, componentele reutilizabile și lista explicită a funcțiilor care sunt încă doar UI și vor fi implementate în fazele ulterioare.
 
 ## 7. Faza 2 — Garaj multi-vehicul și VIN
 
