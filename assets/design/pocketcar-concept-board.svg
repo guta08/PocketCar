@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1000" viewBox="0 0 1440 1000">
+<defs>
+ <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2767E8"/><stop offset="1" stop-color="#5A9BFF"/></linearGradient>
+ <linearGradient id="car" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#AFC6E7"/><stop offset="1" stop-color="#526A8B"/></linearGradient>
+ <style>
+ .h{font:700 26px Inter,Arial;fill:#152238}.t{font:600 17px Inter,Arial;fill:#23344D}.s{font:14px Inter,Arial;fill:#718096}.white{fill:#fff}.muted{fill:#8795A8}
+ </style>
+</defs>
+<rect width="1440" height="1000" fill="#EAF0F7"/>
+<text x="64" y="56" class="h" font-size="30">PocketCar — Visual direction</text><text x="64" y="84" class="s">Minimal · Balanced · Adaptive Light / Dark · English-first</text>
+<!-- light phone -->
+<rect x="60" y="120" width="390" height="820" rx="42" fill="#FFFFFF" stroke="#D5DFEA" stroke-width="3"/>
+<rect x="75" y="140" width="360" height="780" rx="30" fill="#F7F9FC"/>
+<text x="98" y="184" class="h" font-size="22">PocketCar</text><circle cx="404" cy="174" r="16" fill="#E9EFF8"/><path d="M398 174h12m-6-6v12" stroke="#416A9D" stroke-width="2"/>
+<text x="98" y="225" class="h">Good morning</text><text x="98" y="250" class="s">Your vehicle at a glance</text>
+<rect x="92" y="270" width="326" height="212" rx="22" fill="#E5ECF5"/>
+<path d="M130 388 L154 354 Q164 338 190 334 L298 334 Q320 336 336 356 L368 378 Q383 387 380 406 L374 422 L142 422 L130 408Z" fill="url(#car)" stroke="#526A82" stroke-width="3"/>
+<path d="M180 350 L205 343 L286 343 L315 363 L164 363Z" fill="#DDEBFA" stroke="#7891AE" stroke-width="2"/>
+<circle cx="184" cy="418" r="19" fill="#27384F"/><circle cx="184" cy="418" r="9" fill="#DCE5EF"/><circle cx="337" cy="418" r="19" fill="#27384F"/><circle cx="337" cy="418" r="9" fill="#DCE5EF"/>
+<text x="110" y="300" class="s">MY VEHICLE</text><text x="110" y="457" class="t">2022 • Vehicle name</text><text x="110" y="475" class="s">VIN ••••••••••••••1234  ·  B 00 ABC</text>
+<text x="98" y="526" class="h">Vehicle status</text>
+<rect x="92" y="545" width="155" height="100" rx="16" fill="#FFFFFF" stroke="#E1E8F0"/><text x="108" y="574" class="s">Documents</text><text x="108" y="606" class="t">2 expiring</text><circle cx="220" cy="573" r="7" fill="#E5A13A"/>
+<rect x="263" y="545" width="155" height="100" rx="16" fill="#FFFFFF" stroke="#E1E8F0"/><text x="279" y="574" class="s">Maintenance</text><text x="279" y="606" class="t">In 1,200 km</text>
+<text x="98" y="690" class="h">Quick access</text>
+<rect x="92" y="708" width="326" height="62" rx="15" fill="#FFFFFF" stroke="#E1E8F0"/><circle cx="122" cy="739" r="15" fill="#EAF1FC"/><text x="150" y="735" class="t">Digital documents</text><text x="150" y="755" class="s">Secure private vault</text>
+<rect x="92" y="790" width="326" height="62" rx="15" fill="#FFFFFF" stroke="#E1E8F0"/><circle cx="122" cy="821" r="15" fill="#EAF1FC"/><text x="150" y="817" class="t">Service history</text><text x="150" y="837" class="s">Next scheduled maintenance</text>
+<rect x="90" y="870" width="330" height="42" rx="14" fill="#FFFFFF"/><text x="112" y="896" class="s">Home</text><text x="190" y="896" class="s">Garage</text><text x="268" y="896" class="s">Service</text><text x="354" y="896" class="s">Profile</text>
+<!-- dark phone -->
+<rect x="520" y="120" width="390" height="820" rx="42" fill="#0D1726" stroke="#27364B" stroke-width="3"/>
+<rect x="535" y="140" width="360" height="780" rx="30" fill="#111E30"/>
+<text x="558" y="184" font-family="Inter,Arial" font-size="22" font-weight="700" fill="#F2F6FC">PocketCar</text><circle cx="864" cy="174" r="16" fill="#24344B"/>
+<text x="558" y="225" font-family="Inter,Arial" font-size="26" font-weight="700" fill="#F2F6FC">Good morning</text><text x="558" y="250" class="s">Your vehicle at a glance</text>
+<rect x="552" y="270" width="326" height="212" rx="22" fill="#1C2C42"/>
+<path d="M590 388 L614 354 Q624 338 650 334 L758 334 Q780 336 796 356 L828 378 Q843 387 840 406 L834 422 L602 422 L590 408Z" fill="url(#car)" stroke="#7D94B2" stroke-width="3"/>
+<path d="M640 350 L665 343 L746 343 L775 363 L624 363Z" fill="#DDEBFA" stroke="#7891AE" stroke-width="2"/>
+<circle cx="644" cy="418" r="19" fill="#0B1421"/><circle cx="644" cy="418" r="9" fill="#AABBD0"/><circle cx="797" cy="418" r="19" fill="#0B1421"/><circle cx="797" cy="418" r="9" fill="#AABBD0"/>
+<text x="570" y="300" class="s">MY VEHICLE</text><text x="570" y="457" font-family="Inter,Arial" font-size="17" font-weight="600" fill="#F2F6FC">2022 • Vehicle name</text><text x="570" y="475" class="s">VIN ••••••••••••••1234  ·  B 00 ABC</text>
+<text x="558" y="526" font-family="Inter,Arial" font-size="23" font-weight="700" fill="#F2F6FC">Vehicle status</text>
+<rect x="552" y="545" width="155" height="100" rx="16" fill="#1B2A3E" stroke="#2A3C54"/><text x="568" y="574" class="s">Documents</text><text x="568" y="606" font-family="Inter,Arial" font-size="17" font-weight="600" fill="#F2F6FC">2 expiring</text><circle cx="680" cy="573" r="7" fill="#E5A13A"/>
+<rect x="723" y="545" width="155" height="100" rx="16" fill="#1B2A3E" stroke="#2A3C54"/><text x="739" y="574" class="s">Maintenance</text><text x="739" y="606" font-family="Inter,Arial" font-size="17" font-weight="600" fill="#F2F6FC">In 1,200 km</text>
+<text x="558" y="690" font-family="Inter,Arial" font-size="23" font-weight="700" fill="#F2F6FC">Quick access</text>
+<rect x="552" y="708" width="326" height="62" rx="15" fill="#1B2A3E" stroke="#2A3C54"/><circle cx="582" cy="739" r="15" fill="#253D5E"/><text x="610" y="735" font-family="Inter,Arial" font-size="16" font-weight="600" fill="#F2F6FC">Digital documents</text><text x="610" y="755" class="s">Secure private vault</text>
+<rect x="552" y="790" width="326" height="62" rx="15" fill="#1B2A3E" stroke="#2A3C54"/><circle cx="582" cy="821" r="15" fill="#253D5E"/><text x="610" y="817" font-family="Inter,Arial" font-size="16" font-weight="600" fill="#F2F6FC">Service history</text><text x="610" y="837" class="s">Next scheduled maintenance</text>
+<rect x="550" y="870" width="330" height="42" rx="14" fill="#1B2A3E"/><text x="572" y="896" class="s">Home</text><text x="650" y="896" class="s">Garage</text><text x="728" y="896" class="s">Service</text><text x="814" y="896" class="s">Profile</text>
+<!-- palette -->
+<text x="980" y="165" class="h">Proposed palette</text>
+<rect x="980" y="195" width="82" height="82" rx="18" fill="#2563EB"/><text x="1078" y="230" class="t">Primary blue</text><text x="1078" y="253" class="s">#2563EB</text>
+<rect x="980" y="300" width="82" height="82" rx="18" fill="#0F1B2D"/><text x="1078" y="335" class="t">Dark background</text><text x="1078" y="358" class="s">#0F1B2D</text>
+<rect x="980" y="405" width="82" height="82" rx="18" fill="#F5F7FB" stroke="#D8E0EA"/><text x="1078" y="440" class="t">Light background</text><text x="1078" y="463" class="s">#F5F7FB</text>
+<rect x="980" y="510" width="82" height="82" rx="18" fill="#16A34A"/><text x="1078" y="545" class="t">Success</text><text x="1078" y="568" class="s">#16A34A</text>
+<rect x="980" y="615" width="82" height="82" rx="18" fill="#D97706"/><text x="1078" y="650" class="t">Warning</text><text x="1078" y="673" class="s">#D97706</text>
+<rect x="980" y="720" width="82" height="82" rx="18" fill="#DC2626"/><text x="1078" y="755" class="t">Critical</text><text x="1078" y="778" class="s">#DC2626</text>
+<text x="980" y="875" class="s">Concept layout only — not final UI specification.</text>
+</svg>
