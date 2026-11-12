@@ -1,98 +1,100 @@
 # PocketCar — Roadmap & Decisions
 
-Versiune 0.1 · 12 noiembrie 2026
+Versiune 1.0 · 12 noiembrie 2026 · Decizii confirmate
 
-## 1. Strategie
-Construiește în pași verticali utilizabili. Nu începe cu automatizarea tuturor registrelor: riscul principal este accesul/API-ul, nu interfața.
+## 1. Decizii ferme
+| Domeniu | Decizie |
+|---|---|
+| Cont | Obligatoriu |
+| Platforme | Android și iOS |
+| Vehicule | Mai multe vehicule per cont din MVP |
+| Destinație | Aplicație publică: Google Play și Apple App Store |
+| Notificări | Push și e-mail, suportate și configurabile independent |
+| Backup | E2EE, activat explicit de utilizator |
+| Documente | Locale în utilizarea normală; niciodată upload în clar |
+| VIN/OCR | Propunerile necesită confirmare |
 
-## 2. Faze
+## 2. Strategie
+Construiește vertical, cu funcționalitate reală la sfârșitul fiecărei faze. Securitatea, protecția datelor și testarea cross-platform sunt criterii de acceptanță, nu activități de final. Nu automatiza registrele înainte de validarea accesului legal și tehnic.
 
-### Faza 0 — Validare și fundație
-- Confirmare platforme/framework.
-- Decizie cont și backup.
-- Model date local.
-- Threat model și criptare.
-- Verificare licențe/termeni pentru scanner, OCR și decoder VIN.
-- Navigație și design system.
-Rezultat: specificație tehnică și backlog aprobate.
+## 3. Faze
 
-### Faza 1 — Garaj și valabilități
-- Adăugare VIN și decodare prin adaptor.
-- Confirmare/editare date vehicul.
-- Număr, CIV și kilometraj.
-- CRUD RCA, CASCO, rovinietă, ITP.
-- Dashboard expirări și proveniență.
-Rezultat: produs util fără integrarea automată a registrelor.
+### Faza 0 — Fundație
+- Framework cross-platform, arhitectură modulară, CI.
+- Cont obligatoriu, e-mail verificat, sesiuni, revocare și ștergere.
+- Model multi-vehicul și izolare per cont.
+- Threat model, key management și proiectare E2EE.
+- Backend dev/staging/prod și observabilitate fără date sensibile.
+**Gate:** arhitectură, model date și fluxuri de securitate aprobate.
 
-### Faza 2 — Service
-- Catalog operațiuni.
-- Reguli după timp și km.
-- Istoric, kilometraj, costuri și service.
+### Faza 1 — Cont și garaj
+- Înregistrare/login/logout și device registry.
+- CRUD vehicule multiple.
+- VIN decode prin adaptor, confirmare/editare.
+- Selector vehicul și dashboard global/per vehicul.
+**Gate:** vehicule izolate corect și date disponibile offline.
+
+### Faza 2 — Valabilități și service
+- RCA, CASCO, rovinietă, ITP per vehicul.
+- Proveniență, status, istoric verificări.
+- Catalog mentenanță, intervale luni/km, istoric, costuri și kilometraj.
 - Alerte locale.
-Rezultat: evidență mentenanță.
+**Gate:** calcule și alerte validate automat.
 
-### Faza 3 — Seif securizat
+### Faza 3 — Seif și scanare
 - Scanner on-device și OCR local.
-- Vault criptat.
-- Biometrie și PIN fallback.
+- Vault criptat, Keychain/Keystore, biometrie și PIN.
 - Asociere documente cu vehicul/valabilitate/service.
-- Teste securitate și backup.
-Rezultat: documente private și locale.
+- Export controlat, ștergere și teste.
+**Gate:** niciun document/OCR nu părăsește dispozitivul în clar.
 
-### Faza 4 — Notificări cloud
-- Backend minimal.
-- E-mail și token push.
-- Worker, programare și deduplicare.
-- APNs/FCM și provider e-mail.
-- Preferințe și teste.
-Rezultat: push și e-mail independente de rularea aplicației.
+### Faza 4 — Backend notificări și sync
+- Identity API, device registry, APNs/FCM și provider e-mail.
+- Worker, programare, deduplicare, retry și anulare.
+- Preferințe push/e-mail independente.
+- Sync selectiv și conflict handling.
+**Gate:** notificări pe dispozitive fizice iOS și Android.
 
-### Faza 5 — Verificări oficiale asistate
+### Faza 5 — Backup E2EE
+- Format versionat și criptare pe dispozitiv.
+- Upload exclusiv ciphertext.
+- Recovery secret, revocare dispozitive și restore.
+- Teste cheie greșită, corupere, upgrade și migrare.
+**Gate:** serverul nu poate decripta; restore validat pe dispozitiv nou.
+
+### Faza 6 — Verificări oficiale asistate
 - Fluxuri ghidate AIDA, RAR și CNAIR.
-- Confirmare manuală rezultat.
-- Istoric sursă și moment.
+- Confirmare manuală și istoric sursă.
 - Evaluare API/parteneriate oficiale.
-Rezultat: verificări mai rapide fără scraping neautorizat.
+**Gate:** fără scraping neautorizat sau CAPTCHA bypass.
 
-### Faza 6 — Extensii
-Cont și sincronizare metadate, backup E2EE opt-in, profil familie, costuri totale, alimentări, anvelope, istoric daune, widget-uri, OBD-II.
+### Faza 7 — Lansare publică
+- GDPR/privacy policy, terms, account deletion și data safety disclosures.
+- App Store privacy labels și Google Play Data Safety.
+- Teste accesibilitate, performanță, securitate și crash.
+- Beta, feedback, remediere și release.
+**Gate:** checklist store complet, fără probleme critice; backup și notificări validate.
 
-## 3. Riscuri
-| Risc | Impact | Măsură |
-|---|---|---|
-| Lipsă API public pentru registre | Automatizare completă imposibilă | Flux asistat/manual |
-| Decoder VIN incomplet în UE | Date incomplete | Multi-provider, confirmare |
-| Pierdere telefon | Pierdere documente | Backup criptat opt-in, avertizare |
-| Backend expune date | Risc de confidențialitate | Payload generic și minimizare |
-| Push întârziat | Alertă ratată | E-mail ca al doilea canal |
-| OCR greșit | Termen incorect | Confirmare obligatorie |
-| Backup necriptat | Încălcarea local-only | Excludere sau E2EE |
-| Schimbare formular oficial | Flux asistat afectat | Fallback manual și link |
+## 4. Riscuri
+| Risc | Măsură |
+|---|---|
+| Lipsă API public pentru registre | Flux asistat/manual |
+| Decoder VIN incomplet în UE | Adaptor multi-provider și confirmare |
+| Recovery secret pierdut | Recovery test și avertizare clară |
+| Backend compromis | Minimizare, E2EE, payload generic |
+| Push întârziat | E-mail ca al doilea canal |
+| OCR greșit | Confirmare obligatorie |
+| Conflict multi-device | Versionare și rezolvare explicită |
+| Cerințe store/GDPR | Privacy-by-design și review pre-release |
 
-## 4. Decizii recomandate
-1. Documente locale și criptate, fără upload.
-2. Biometrie prin API OS și PIN fallback.
-3. VIN decoder configurabil; NHTSA doar ca sursă inițială de test, nu garanție pentru Europa.
-4. Valabilități manual/OCR confirmat + verificare oficială asistată.
-5. Backend minimal pentru push/e-mail, fără documente.
-6. Mentenanță cu declanșator „oricare dintre km sau timp”.
-7. Scanner și OCR on-device.
-8. Modelul suportă mai multe mașini chiar dacă MVP începe cu una.
-
-## 5. Întrebări deschise
-- Cont obligatoriu sau opțional?
-- Dacă telefonul se pierde, accepți pierderea documentelor sau vrei backup E2EE?
-- PIN separat de cel al telefonului sau credential OS?
-- Alerte pentru toate evenimentele sau configurabile per categorie?
-- Aplicație personală sau publicare în magazine?
-- Mai multe mașini din prima versiune?
-
-## 6. Instrucțiuni pentru agentul de implementare
-- Citește toate documentele din docs înainte de implementare.
-- Nu presupune API public doar pentru că există formular web.
-- Nu implementa scraping/CAPTCHA bypass.
-- Nu trimite documente, imagini sau OCR în backend.
-- Nu considera VIN/OCR confirmat fără utilizator.
-- Verifică permisiuni, colectare date, licență, cost și procesare locală pentru orice SDK.
-- Implementează pe faze și cere validare la finalul fiecărei faze.
-- Orice abatere de la local-only necesită aprobare explicită.
+## 5. Instrucțiuni ferme pentru Qoder
+- Citește README și toate fișierele din docs înainte de implementare.
+- docs/QODER_IMPLEMENTATION_SPEC.md este contractul MVP și sursa de adevăr.
+- Nu schimba deciziile ferme fără aprobare.
+- Nu implementa scraping/CAPTCHA bypass sau API-uri private neautorizate.
+- Nu trimite documente, imagini sau OCR în clar către backend.
+- Nu stoca cheia E2EE pe server și nu folosi parola contului ca unic secret de decriptare.
+- Implementează pe faze; oprește-te la fiecare gate și prezintă raport, teste și riscuri.
+- Nu începe faza următoare fără validare explicită.
+- Nu adăuga analytics, reclame sau trackere fără evaluare de confidențialitate și aprobare.
+- Orice abatere de securitate necesită aprobare explicită și actualizarea documentației.
