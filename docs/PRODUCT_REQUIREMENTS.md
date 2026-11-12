@@ -1,140 +1,117 @@
 # PocketCar — Product Requirements
 
-Versiune 0.1 · 12 noiembrie 2026 · Draft · Platforme: iOS și Android
+Versiune 1.0 · 12 noiembrie 2026 · Decizii confirmate
 
-## 1. Viziune
-PocketCar este un asistent personal pentru administrarea unuia sau mai multor autovehicule. Reduce riscul de a uita expirări, revizii sau documente și oferă acces rapid la documentele necesare.
+## 1. Viziune și decizii ferme
+PocketCar este o aplicație mobilă publică pentru administrarea unuia sau mai multor autovehicule. Reduce riscul de a uita expirări, revizii sau documente și oferă acces securizat la documentele auto/personale.
 
-## 2. Garaj și adăugare vehicul
-- Adăugare prin VIN introdus manual sau scanat cu camera.
+- Cont obligatoriu.
+- Platforme Android și iOS.
+- Mai multe vehicule per cont încă din MVP.
+- Destinație: Google Play și Apple App Store.
+- Push și e-mail: ambele canale suportate, configurabile independent.
+- Backup E2EE, activat explicit de utilizator.
+- Documentele și conținutul lor rămân locale în utilizarea normală; backup-ul opțional conține numai date criptate pe dispozitiv.
+
+## 2. Cont și onboarding
+- Cont obligatoriu înainte de utilizarea funcțiilor principale.
+- Înregistrare cu e-mail, verificarea adresei, autentificare, logout, revocare sesiuni și ștergere cont.
+- Recuperarea contului nu trebuie să permită automat decriptarea seifului.
+- După autentificare, utilizatorul poate crea și gestiona mai multe vehicule.
+- Explică separat ce date sunt locale, ce metadate ajung la server și cum funcționează backup-ul.
+
+## 3. Garaj și adăugare vehicul
+- Adăugare prin VIN introdus manual sau scanat.
 - Validare VIN; suport controlat pentru vehicule mai vechi.
-- Decodare VIN printr-un furnizor configurabil.
-- Date posibile: marcă, model, an model, caroserie, combustibil, cilindree, putere, transmisie, doar dacă sursa le furnizează.
+- Decodare printr-un furnizor configurabil.
+- Date posibile: marcă, model, an model, caroserie, combustibil, cilindree, putere, transmisie, numai dacă sursa le furnizează.
 - Ecran de confirmare/editare înainte de salvare.
-- Număr de înmatriculare, data primei înmatriculări, kilometraj și seria CIV se completează manual sau prin scanarea talonului.
-- Nu se deduce proprietarul și nu se accesează date personale nepublice.
+- Număr de înmatriculare, data primei înmatriculări, kilometraj și seria CIV manual sau din scanarea talonului.
+- Nu deduce proprietarul și nu accesa date personale nepublice.
+- Fiecare vehicul are date, documente, mentenanță și alerte separate.
 
-## 3. Valabilități
-Tipuri inițiale: RCA, CASCO, rovinietă, ITP.
+## 4. Valabilități
+Tipuri: RCA, CASCO, rovinietă, ITP.
 
-Pentru fiecare înregistrare:
-- dată început și dată expirare;
-- emitent/asigurător și număr document, opțional;
-- notițe și document scanat asociat;
-- sursă: manual, OCR, verificare oficială sau API;
-- data ultimei verificări;
-- stare: neverificat, verificat, expirat, necunoscut sau neconcludent.
+Pentru fiecare: dată început/expirare, emitent și număr opțional, notițe, document asociat, sursă, ultima verificare și status (neverificat, verificat, expirat, necunoscut, neconcludent).
+- Datele manuale pot fi introduse/modificate de utilizator.
+- OCR și rezultatele externe sunt propuneri până la confirmare.
+- Nu suprascrie o valoare confirmată fără prezentarea diferenței și accept.
+- Păstrează istoricul local.
+- CASCO se introduce din poliță/OCR sau integrare autorizată; nu presupune registru public centralizat.
+- „Nu am găsit rezultat” nu înseamnă automat „nu există poliță”.
 
-Reguli:
-- Utilizatorul poate introduce/modifica manual orice dată.
-- OCR și datele externe sunt doar propuneri până la confirmare.
-- O verificare nu suprascrie o valoare confirmată fără prezentarea diferenței și acceptul utilizatorului.
-- Istoricul modificărilor se păstrează local.
-- CASCO se introduce din poliță/OCR sau prin integrare autorizată cu asigurătorul; nu presupunem registru public centralizat.
+## 5. Mentenanță
+Operațiuni: ulei și filtre, lichid frână, antigel, bujii, distribuție, frâne, anvelope, baterie, revizie generală și operațiuni personalizate.
+Fiecare regulă suportă interval km, interval luni, ultima dată/km, praguri de avertizare, cost, service, notițe și factură scanată.
+- Declanșator „oricare dintre”: ex. 10.000 km SAU 12 luni.
+- Dacă kilometrajul nu este actualizat, scadența în km este estimativă/necunoscută.
+- Înregistrarea unei operațiuni generează următorul termen.
+- Istoricul nu se șterge la schimbarea intervalului viitor.
 
-## 4. Mentenanță / service
-Operațiuni predefinite:
-- ulei motor și filtre (ulei, aer, habitaclu, combustibil);
-- lichid frână, antigel, bujii;
-- distribuție/curea/lanț, frâne, anvelope, baterie;
-- revizie generală și operațiuni personalizate.
+## 6. Seif privat
+Categorii auto (RCA, CASCO, ITP, rovinietă, talon, CIV, facturi, devize), personale (permis, CI, pașaport) și personalizate.
+- Stocare în sandbox privat; fără upload în clar.
+- Criptare autentificată înainte de scriere și înainte de backup.
+- Chei locale protejate de Keychain/Secure Enclave pe iOS și Android Keystore pe Android.
+- Backup E2EE opțional; serverul stochează numai ciphertext.
+- Acces Face ID/Touch ID/biometrie Android și PIN fallback.
+- Blocare automată la background și timeout.
+- Fără conținut sensibil în notificări, loguri sau analytics.
+- Exclude fișierele/cheile din backup OS necriptat.
+- Ștergerea elimină fișierul criptat, thumbnail-uri și temporare; politica pentru backup este explicată.
+- Export numai la acțiunea explicită, după reautentificare.
+Aplicația nu accesează sau stochează șabloane biometrice.
 
-Fiecare regulă poate avea:
-- interval în kilometri;
-- interval în luni;
-- dată și kilometraj la ultima operațiune;
-- praguri de avertizare;
-- cost, service, notițe și factură scanată.
+## 7. Scanare și OCR
+- Scanare document, nu simplă fotografie: detectare margini, captură auto/manuală, corecție perspectivă, crop, rotire, filtre și export JPEG/PDF.
+- Procesare și OCR on-device.
+- OCR poate propune tip document, VIN, număr, emitent și expirare.
+- Confirmare obligatorie; marchează valorile incerte.
+- Șterge fotografia brută după procesare dacă utilizatorul nu cere păstrarea.
 
-Reguli de calcul:
-- Suportă declanșatorul „oricare dintre”: de exemplu 10.000 km SAU 12 luni.
-- Dacă kilometrajul nu este actualizat, nu se pretinde că scadența bazată pe km este precisă.
-- La înregistrarea operațiunii se generează următorul termen.
-- Istoricul nu se șterge când se schimbă intervalul viitor.
+## 8. Notificări
+Push pe telefon și e-mail sunt ambele obligatorii ca funcționalități, configurabile separat per utilizator și tip de eveniment.
+- Praguri inițiale: 30, 14, 7, 3, 1 zi și ziua expirării; configurabile.
+- Canalele sunt independente; eroarea unuia nu anulează celălalt.
+- Deduplicare, retry și anulare/actualizare la schimbarea termenului.
+- Payload generic, fără VIN, număr sau conținut document.
+- Backend necesar pentru push remote și e-mail când aplicația este închisă.
+- „Trimis de provider” nu înseamnă „citit”.
 
-## 5. Seif privat de documente
-Categorii:
-- auto: RCA, CASCO, ITP, rovinietă, talon, CIV, facturi, devize;
-- personale: permis, carte de identitate, pașaport;
-- altele: categorii definite de utilizator.
+## 9. Backup și sincronizare
+- Backup E2EE opțional și transparent.
+- Criptare pe dispozitiv înainte de transmitere; serverul nu deține cheia de decriptare.
+- Definește format versionat, recovery secret, rotație, revocare, retenție și ștergere.
+- Pierderea cheii/recovery secret poate face backup-ul imposibil de recuperat; avertizare și test de recovery.
+- Sincronizarea metadatelor este separată de backup-ul seifului.
+- Conflictele multi-device nu se rezolvă prin suprascriere silențioasă.
+- Fără copii necriptate în iCloud/Google sau servicii terțe.
 
-Cerințe obligatorii:
-- Fișierele rămân în sandbox-ul privat al aplicației; fără upload în cloud/backend.
-- Criptare înainte de scrierea pe disc.
-- Cheia protejată prin Keychain/Secure Enclave pe iOS și Android Keystore pe Android.
-- Acces prin Face ID/Touch ID/biometrie Android și/sau PIN al aplicației.
-- Blocare automată la background și după timeout.
-- Fără previzualizări sau nume sensibile în notificări, loguri sau analytics.
-- Excludere din backup necriptat; politica de backup trebuie explicată clar.
-- Ștergerea elimină fișierul criptat, thumbnail-urile și fișierele temporare.
-- Export doar la acțiunea explicită a utilizatorului.
+## 10. Dashboard
+- Selector și rezumat global/per vehicul.
+- Următoarea expirare, status documente, următoarea operațiune, kilometraj și ultima actualizare.
+- Acțiuni rapide: document, operațiune, kilometraj.
+- Prioritate: expirate, următoarele 7 zile, 30 zile, mentenanță.
+- Datele lipsă apar ca „neverificat/date incomplete”, nu „totul este în regulă”.
 
-Aplicația nu accesează și nu stochează amprente sau șabloane Face ID. Sistemul de operare confirmă autentificarea.
+## 11. Non-funcționale
+Offline pentru date locale; TLS; minimizare date backend; fără upload în clar al documentelor/OCR; localizare; toleranță la indisponibilitatea registrelor; export/ștergere; revocare dispozitive; accesibilitate; performanță; conformitate GDPR și cerințe store.
 
-## 6. Scanare documente
-- Flux de scanare, nu simplă fotografie.
-- Detectare margini și captură automată/manuală.
-- Corecție perspectivă, crop, rotire, îndreptare, contrast și filtre.
-- Export JPEG și/sau PDF.
-- Procesare on-device.
-- Revizuire și ajustare înainte de salvare.
-- OCR opțional local pentru tip document, VIN, număr, emitent și expirare.
-- Câmpurile OCR necesită confirmare; se evidențiază valorile incerte.
-- Fotografia brută se șterge după procesare dacă utilizatorul nu a cerut păstrarea ei.
+## 12. Acceptanță MVP
+- [ ] Cont, verificare e-mail, autentificare, logout, revocare și ștergere.
+- [ ] Mai multe vehicule, cu date izolate.
+- [ ] VIN decode și confirmare/editare.
+- [ ] RCA/CASCO/rovinietă/ITP per vehicul.
+- [ ] Proveniență și timestamp verificare.
+- [ ] Mentenanță pe timp/km și istoric.
+- [ ] Scanner cu crop/perspectivă și OCR local.
+- [ ] Vault criptat local, biometric și PIN.
+- [ ] Backup E2EE cu restore testat.
+- [ ] Push și e-mail testate independent pe ambele platforme.
+- [ ] Alerte deduplicate, fără date sensibile.
+- [ ] Funcționare offline, export și ștergere date.
+- [ ] Testare fizică Android/iOS și pregătire publicare.
 
-## 7. Notificări
-Canale: push pe telefon și e-mail, configurabile independent.
-
-Lead times inițiale propuse: 30, 14, 7, 3 și 1 zi înainte, plus în ziua expirării. Utilizatorul poate configura pragurile și tipurile de evenimente.
-
-Cerințe:
-- Push și e-mail sunt independente; eșecul unuia nu anulează celălalt.
-- Deduplicare și retry pentru erori temporare.
-- Fără VIN complet, număr complet sau conținut document în notificare.
-- Backend necesar pentru e-mail și push remote când aplicația este închisă.
-- Notificările locale pot fi fallback, dar nu înlocuiesc backend-ul pentru e-mail.
-- Statusul „trimis de provider” nu trebuie confundat cu „citit de utilizator”.
-
-## 8. Dashboard
-- Vehicul selectat și rezumat.
-- Următoarea expirare.
-- Documente cu status vizibil.
-- Următoarea operațiune service.
-- Kilometraj și data ultimei actualizări.
-- Acțiuni rapide: adaugă document, operațiune, actualizează kilometraj.
-
-Ordine alerte: expirate, următoarele 7 zile, următoarele 30 zile, apoi mentenanță estimată. Dacă lipsesc date, afișează „date incomplete” sau „neverificat”, nu „totul este în regulă”.
-
-## 9. Cerințe non-funcționale
-- Funcționare offline pentru datele locale.
-- Criptare pentru documente și date sensibile locale.
-- TLS pentru comunicații.
-- Minimizarea datelor trimise către backend.
-- Fără upload documente, imagini brute sau text OCR.
-- Localizare pentru dată, fus orar, unități și limbă.
-- Toleranță la indisponibilitatea surselor oficiale.
-- Export și ștergere date.
-- Gestionarea schimbării dispozitivului fără compromiterea principiului local-first.
-
-## 10. Criterii de acceptanță MVP
-- [ ] Adăugare vehicul prin VIN și editarea datelor decodate.
-- [ ] Gestionare RCA, CASCO, rovinietă și ITP.
-- [ ] Afișare sursă și momentul verificării.
-- [ ] Reguli service după timp și/sau km și istoric operațiuni.
-- [ ] Scanare document cu crop și corecție perspectivă.
-- [ ] Documente criptate local, fără transmitere la backend.
-- [ ] Seif biometric și fallback PIN.
-- [ ] Notificări push și e-mail testate.
-- [ ] Alerte deduplicate și fără date sensibile.
-- [ ] Utilizare offline pentru datele locale.
-
-## 11. Extensii viitoare
-Mai multe mașini/profil familie, cost total de deținere, alimentări și consum, anvelope și DOT, istoric daune, export PDF service, widget, import calendar, OBD-II și profil service pe motorizare.
-
-## 12. Decizii deschise
-- Cont obligatoriu sau opțional?
-- Backend și furnizor e-mail?
-- Backup criptat end-to-end opt-in sau fără backup?
-- Framework mobil?
-- Doar România sau și alte piețe?
-- O mașină în MVP sau mai multe din prima versiune?
+## 13. În afara MVP
+Plăți/subscription, OBD-II, telematică, profil familie cu roluri avansate, import automat tranzacții, istoric daune și marketplace service.
