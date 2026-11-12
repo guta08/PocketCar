@@ -4,13 +4,13 @@ Folosește aceste comenzi după ce Qoder a citit documentația completă.
 
 ## Prima pornire
 ```text
-Citește README.md și toate documentele din docs/. Urmează docs/EXECUTION_PLAYBOOK.md. Începe Faza 0 și execută integral instrucțiunile. Nu implementa faza următoare. La final actualizează docs/IMPLEMENTATION_STATUS.md, rulează verificările și prezintă raportul standard.
+Citește README.md și toate documentele din docs/, în special docs/DEPLOYMENT_ARCHITECTURE.md. Urmează docs/EXECUTION_PLAYBOOK.md. Începe Faza 0 și execută integral instrucțiunile. Nu implementa faza următoare. La final actualizează docs/IMPLEMENTATION_STATUS.md, rulează verificările și prezintă raportul standard.
 ```
 
 ## Pornirea unei faze ulterioare
 Înlocuiește N cu numărul fazei:
 ```text
-Începe Faza N din docs/EXECUTION_PLAYBOOK.md. Citește statusul curent din docs/IMPLEMENTATION_STATUS.md și verifică dependențele. Execută integral faza fără opriri intermediare pentru aprobări tehnice uzuale. Rulează și repară testele, verifică toate criteriile de acceptanță, actualizează documentația și IMPLEMENTATION_STATUS.md, creează commit și prezintă raportul standard. Oprește-te la final; nu începe faza următoare.
+Începe Faza N din docs/EXECUTION_PLAYBOOK.md. Citește statusul curent din docs/IMPLEMENTATION_STATUS.md și verifică dependențele. Execută integral faza fără opriri intermediare pentru aprobări tehnice uzuale. Rulează și repară testele, verifică toate criteriile de acceptanță, actualizează documentația și IMPLEMENTATION_STATUS.md, creează commit și prezintă raportul standard. Oprește-te la final; nu începe faza următoare. Nu executa deployment pe TrueNAS și nu modifica infrastructura activă fără aprobarea explicită a proprietarului.
 ```
 
 ## Dacă Qoder s-a întrerupt în timpul unei faze
