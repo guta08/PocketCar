@@ -28,8 +28,9 @@ Execuția completă, cu task-uri și criterii de acceptanță, este în [EXECUTI
 | Fază | Livrabil |
 |---|---|
 | 0 | Audit repository, stack, arhitectură, model date, threat model |
-| 1 | Fundație cross-platform, design system, backend și conturi |
-| 2 | Garaj multi-vehicul, VIN și dashboard |
+| 1 | Fundație cross-platform, infrastructură UI de bază, backend și conturi |
+| 1.5 | Implementare UI/UX completă conform designului aprobat | 1 |
+| 2 | Garaj multi-vehicul, VIN și dashboard funcțional |
 | 3 | RCA/CASCO/rovinietă/ITP și mentenanță |
 | 4 | Seif criptat, scanner și OCR local |
 | 5 | Push și e-mail reale |
@@ -41,7 +42,7 @@ Verificările oficiale AIDA/RAR/CNAIR rămân asistate dacă nu există API auto
 ## Reguli de execuție
 - Qoder execută integral faza solicitată și nu cere aprobări intermediare pentru decizii tehnice uzuale.
 - La final testează, repară, actualizează IMPLEMENTATION_STATUS.md, face commit și prezintă raport.
-- Qoder se oprește după fiecare fază și așteaptă comanda „Începe Faza N”.
+- Faza 1.5 este obligatorie după Faza 1 și înainte de Faza 2. Qoder se oprește după fiecare fază și așteaptă comanda „Începe Faza N”.
 - Nu începe automat următoarea fază.
 - Nu compromite securitatea pentru a marca o fază ca terminată.
 - Nu publica în magazine fără aprobare explicită.
