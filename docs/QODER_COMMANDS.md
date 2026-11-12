@@ -13,6 +13,14 @@ Citește README.md și toate documentele din docs/, în special docs/DEPLOYMENT_
 Începe Faza N din docs/EXECUTION_PLAYBOOK.md. Citește statusul curent din docs/IMPLEMENTATION_STATUS.md și verifică dependențele. Execută integral faza fără opriri intermediare pentru aprobări tehnice uzuale. Rulează și repară testele, verifică toate criteriile de acceptanță, actualizează documentația și IMPLEMENTATION_STATUS.md, creează commit și prezintă raportul standard. Oprește-te la final; nu începe faza următoare. Nu executa deployment pe TrueNAS și nu modifica infrastructura activă fără aprobarea explicită a proprietarului.
 ```
 
+## Implementarea separată a UI/UX aprobat
+
+După finalizarea Fazei 1, rulează separat:
+
+```text
+Începe Faza 1.5 din docs/EXECUTION_PLAYBOOK.md. Citește integral docs/DESIGN_SPECIFICATION.md și inspectează assets/design/pocketcar-concept-board.svg. Implementează toate ecranele, componentele și stările UI pentru Android și iOS, cu Light/Dark automat, EN/RO, bottom navigation, responsive layout și accesibilitate. Respectă delimitarea fazei: nu pretinde că funcțiile de business sunt implementate doar pentru că există ecrane. Rulează build, lint, typecheck și teste UI; generează capturi pentru toate ecranele principale în ambele teme. Actualizează IMPLEMENTATION_STATUS.md și documentația, creează commit și prezintă raportul complet. Oprește-te după Faza 1.5; nu începe Faza 2 și nu face deployment pe TrueNAS.
+```
+
 ## Dacă Qoder s-a întrerupt în timpul unei faze
 ```text
 Reia Faza N. Înainte de modificări, inspectează git status, ultimele commit-uri și docs/IMPLEMENTATION_STATUS.md. Identifică exact ce este deja implementat și ce testează. Continuă fără să duplici sau să suprascrii munca validă. Termină faza, rulează verificările, actualizează statusul și raportează.
@@ -26,6 +34,8 @@ Auditează Faza N față de docs/EXECUTION_PLAYBOOK.md și docs/PRODUCT_REQUIREM
 ## Ordinea recomandată
 - Faza 0 — audit și plan tehnic
 - Faza 1 — fundație, interfață și cont
+- Faza 1.5 — implementarea completă UI/UX aprobat
+- Faza 1.5 — UI/UX complet
 - Faza 2 — garaj multi-vehicul și VIN
 - Faza 3 — valabilități și mentenanță
 - Faza 4 — seif, scanner și OCR
