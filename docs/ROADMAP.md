@@ -14,6 +14,14 @@ Versiune 1.1 · 12 noiembrie 2026
 | Documente | Locale, criptate, fără upload în clar |
 | VIN/OCR | Confirmare utilizator |
 
+## Hosting și livrare
+
+- Dezvoltare/testare: PC Windows cu Qoder în workspace local.
+- Versionare: GitHub.
+- Hosting backend: TrueNAS în calea stabilită de proprietar, /mnt/Pool1/Stocare/PocketCar, după auditul de capacitate și securitate.
+- Actualizare TrueNAS: numai versiuni validate, versionate și aprobate explicit; datele persistente sunt separate de cod.
+- Detalii și criterii: [DEPLOYMENT_ARCHITECTURE.md](DEPLOYMENT_ARCHITECTURE.md).
+
 ## Plan până la prima versiune funcțională
 Execuția completă, cu task-uri și criterii de acceptanță, este în [EXECUTION_PLAYBOOK.md](EXECUTION_PLAYBOOK.md).
 
