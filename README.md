@@ -13,6 +13,7 @@ Aplicație mobilă publică pentru administrarea unuia sau mai multor autovehicu
 ## Documentație — sursa de adevăr
 - [Product Requirements](docs/PRODUCT_REQUIREMENTS.md)
 - [Architecture & Security](docs/ARCHITECTURE_SECURITY.md)
+- [Deployment Architecture — Windows + TrueNAS](docs/DEPLOYMENT_ARCHITECTURE.md)
 - [Romania Data Sources](docs/ROMANIA_DATA_SOURCES.md)
 - [Roadmap](docs/ROADMAP.md)
 - [Final Qoder Implementation Specification](docs/QODER_IMPLEMENTATION_SPEC.md)
@@ -21,9 +22,12 @@ Aplicație mobilă publică pentru administrarea unuia sau mai multor autovehicu
 - [Implementation Status — progresul proiectului](docs/IMPLEMENTATION_STATUS.md)
 
 ## Cum se lucrează
-1. Deschide Qoder în repository-ul de cod PocketCar.
-2. Dă comanda din [QODER_COMMANDS.md](docs/QODER_COMMANDS.md) pentru Faza 0.
-3. După raport, folosește aceeași comandă schimbând numărul fazei.
-4. Qoder citește progresul din IMPLEMENTATION_STATUS.md; nu trebuie să copiezi rapoarte între agenți.
 
-Qoder execută fiecare fază integral, testează, actualizează documentația și se oprește la final. Nu începe faza următoare fără comanda utilizatorului.
+1. Repository-ul se clonează pe PC-ul Windows; Qoder folosește workspace-ul local **This computer**.
+2. PC-ul este mediul principal de dezvoltare și testare.
+3. GitHub este sursa oficială de cod și documentație.
+4. TrueNAS găzduiește serviciile backend PocketCar; nu este workspace-ul principal de dezvoltare.
+5. Qoder urmează [Deployment Architecture](docs/DEPLOYMENT_ARCHITECTURE.md) și comenzile din [QODER_COMMANDS.md](docs/QODER_COMMANDS.md).
+6. Pe TrueNAS se publică numai versiuni validate și aprobate explicit. Datele persistente sunt separate de cod și nu se suprascriu la deploy.
+
+Qoder execută fiecare fază integral, testează, actualizează documentația și se oprește la final. Nu începe faza următoare și nu face deploy în producție fără aprobarea utilizatorului.
